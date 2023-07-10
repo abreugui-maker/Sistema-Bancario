@@ -26,19 +26,25 @@ while True:
         else:
             saldo += valor
             extrato['deposito'].append(valor)
-            print(f"Depósito de R${valor:0.2f} realizado!", end="\n\n")
+            print(f"Depósito de R${valor:.2f} realizado!", end="\n\n")
     
     elif menu == "2":
-        
-        
-        if saldo == 0 | valor > saldo:
-            print("Saldo insuficiente para a operação", f"Seu saldo é {saldo}", end="\n\n")
+        valor = int(input("Digite o valor a ser sacado:"))
+        if valor<=0:
+            print("Valor de saque inválido!")
+        elif saldo == 0 or valor > saldo:
+            print("Saldo insuficiente para a operação")
+            print(f"Seu saldo é R${saldo:.2f}", end="\n\n")
+        else:
+            saldo -= valor
+            extrato['saque'].append(valor)
+            print(f"Saque de R${valor:.2f} realizado!", end="\n\n")
 
     elif menu == "3":
         print(extrato)
 
     elif menu == "4":
-        print("Saindo. Tenha um bom dia!")
+        print("Tchau. Volte sempre!")
         break
     else:
         print("Operação inválida")
